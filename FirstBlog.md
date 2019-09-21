@@ -1,7 +1,4 @@
----
-title: First Blog
-layout: default
----
+
 
 This is my first blog for CIT480.  This was full of new experiences, as I have never used Docker nor have I used Github pages/Jekyll.
 
