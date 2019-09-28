@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Actual Third Blog Post!"
-date:   2019-09-27 21:08:35 -0700
+date:   2019-09-26 21:08:35 -0700
 categories: jekyll update
 ---
 
