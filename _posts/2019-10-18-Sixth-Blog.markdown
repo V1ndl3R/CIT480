@@ -1,0 +1,5 @@
+This week was mainly spent working on projet0.  This is my first experience withAWS, there are some things that are very easy to do in AWS, and other things that are extremely difficult.  I believe our project seems to be working, I am not 100% sure that it is all correct but we were able to complete all the tasks.  One area that I am not sure on is VPC and routing.  
+
+I think it is all routed correctly but it is kinda of difficult to work with in the AWS environment.  If you try to utilize the wizards nothing works the way it is suppose to.  You have to do everything from scratch and it is hard to make sure they are all pointing to the correct location.  This is also the first time I have actaully done any real routing.  Everything up to this point has just been in theory or just routing tables. 
+
+I am very intrested to see how other groups were able to accomplish this project and what else we are able to do with AWS.  This class seems to have a strong focus on getting experience in areas that actual jobs will want you to have.  The only part that is difficult is it does not seem the classes before this we/are building up to this.  
