@@ -10,21 +10,36 @@ some setup files that you can make or edit before you boot.
 
 It is recommended that you create a config.yml file and place it in your boot partition. It should look like this:
 main:
+
   name: 'pwnagotchi' <--- You can rename it here.
+
   whitelist:
+
     - 'YourHomeNetworkMaybe'  <-- Place the SSID of any networks that you do not want to hack here.
+
   plugins:
+
     grid:
+
       enabled: true
+
       report: true
+
       exclude:
-        - 'YourHomeNetworkMaybe'   <-- same here you can place multiple if you need to 
+
+        - 'YourHomeNetworkMaybe'   <-- same here you can place multiple if you need to
+ 
         - 'addmore if you want'
 
+
 ui:
+
     display:
+
       type: 'waveshare_2'
+
       color: 'black'
+
 
 
 The rest you can leave the same, change the display if you used a different one or version.  After that you can just
