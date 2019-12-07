@@ -8,10 +8,10 @@ For this project I used:
 1 LED - optional
 Jumper cables
 
-	PIRs are made from a pyroelectric sensor which has a range of 5-7 meters in a 100 degree arc.
+PIRs are made from a pyroelectric sensor which has a range of 5-7 meters in a 100 degree arc.
 Because our bodies generate infrared heat it gets picked up by the motion sensor, when it detects someone enter the field.
 The sensor will output a 5V signal for a specified period of time.  You can also program the delay before it will detect a person.  
-	There are two knobs installed on the front of the board, the right knob controls the range.  The range is from
+There are two knobs installed on the front of the board, the right knob controls the range.  The range is from
 3 to 7 meters.  Rotating the knob counter-clockwise will increase the knob and clockwise will decrease the range.
 The knob on the left will increase or decrease the time delay.  If you rotate the knob to the left or counter-clockwise
 it will decrease the time delay.  If you rotate the knob to the right or clockwise it will increase the time delay up to 
