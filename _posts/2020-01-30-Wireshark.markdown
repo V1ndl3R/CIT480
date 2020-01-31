@@ -35,7 +35,7 @@ Now with WPA cracking it is very easy as well but you will need to use a wordlis
 	aircrack-ng /tmp/captures/WPA-01.cap -w /tmp/wordlists/passlist
 	Select the network you wish to attack, 3 for this attack.
 
-	![WPA-1](/assets/WPA-1.png)
+	![WPA-1](/assets/WPA-1.png){:class="img-responsive"}
 
 Again after some time it will come back with a crack password in this case: breezeless.
 You will also use airdecap-ng to unencrypt the traffic.
