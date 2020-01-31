@@ -41,8 +41,8 @@ Again after some time it will come back with a crack password in this case: bree
 You will also use airdecap-ng to unencrypt the traffic.
 	airdecap-ng /tmp/captures/WPA-01.cap -e TOWNSON333 -p breezeless
 
-	![WPA-2](/assets/WPA-2.png)
-	![WPA-3](/assets/WPA-3.png)
+	<img src="/assets/WPA-2.png" alt="">
+	<img src="/assets/WPA-3.png" alt="">
 
 This again will allow you to view the traffic in plaintext.
 
