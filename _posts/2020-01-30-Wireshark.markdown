@@ -10,7 +10,7 @@ airmon-ng, aireplay-ng and many more.  For this we are just using the base aircr
 First you need to select the .cap file.
 	aircrack-ng /tmp/captures/WEP1.cap
 
-	![WEP-1](/assets/WEP-1.png)
+	(https://github.com/V1ndl3R/CIT480/blob/master/assets/WEP-1.PNG))
 
 This will show you all wireless networks that are on this capture.  You need to know what network traffic that you are trying to view.
 It will show you the BSSID, ESSID, and the Encyption, for this example we are attacking 5 TOWSON22 network. The software will attempt to 
@@ -43,6 +43,8 @@ You will also use airdecap-ng to unencrypt the traffic.
 
 	![WPA-2](/assets/WPA-2.png)
 	![WPA-3](/assets/WPA-3.png)
+
+	https://github.com/V1ndl3R/CIT480/blob/master/assets/WEP-1.PNG
 
 This again will allow you to view the traffic in plaintext.
 
