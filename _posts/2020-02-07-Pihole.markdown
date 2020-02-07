@@ -1,0 +1,38 @@
+This week I made a pi-hole adblocker from an old raspberry-pi 3B.  You can make a pi-hole from anything from a docker container,
+a pi-zero, or even a virtual machine. The first step is to install the software to run your pi, I used the latest version of Raspbian. I used balenaEther to flash the image on the SD card.  To do this it is very straight forward one thing you may want to do is verify the SHA-256 hash to ensure the integrity of the file you downloaded. 
+	To do this on windows run: Get-FileHash <pathtofile>
+	On linux sha256sum <pathtofile>
+
+There are a few different ways to install the pi-hole software the easiest of these is
+to use a curl command.
+	curl -sSL https://install.pi-hole.net | bash
+Becareful when piping bash make sure you trust the source of the code before you do this.
+If you would like to run the scripts yourself run these commands.
+	wget -O basic-install.sh https://install.pi-hole.net
+	sudo bash basic-install.sh
+Once the install is complete, you need to either individual set you devices to use the PI-hole as their DNS server, or you can change the settings on your router so your entire network to use the DNS.  To make sure this always works your need to make your 
+raspberry-pi have a static IP address.  You will need to do this on your router and on your raspberry-pi.  
+To do this you need to edit your dhcpcd.conf file run this command:
+	sudo nano /etc/dhcpcd.conf
+	make it look like this:
+	interface eth0
+
+	static ip_address=192.168.0.10/24
+	static routers=192.168.0.1
+	static domain_name_servers=192.168.0.1
+
+	interface wlan0
+	
+	static ip_address=192.168.0.200/24
+	static routers=192.168.0.1
+	static domain_name_servers=192.168.0.1
+
+After you have edited the file reboot the system and run ifconfig.  You should see the wlan0 set to 192.168.0.200.
+Once everything is configured if you need to update the software run:
+	pi-hole -up
+
+
+You can also use the dashboard by typing in the 192.168.0.200/admin.
+Before you can access the dashboard you need to run:
+	pihole -a -p
+This allows you to set a new password for your dashboard.
