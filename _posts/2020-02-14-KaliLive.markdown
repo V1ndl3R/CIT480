@@ -1,13 +1,13 @@
-This week I am going to go through how to install Kali Linux Live and run it on a USB stick.  The only additional hardware you will need besides your laptop or computer to run this is a USB stick with more than 8GB of storage space.  I will be using a PNY 32GB USB 3.0 stick.
+This week I am going to go througih how to install Kali Linux Live and run it on a USB stick.  The only additional hardware you will need besides your laptop or computer to run this is a USB stick with more than 8GB of storage space.  I will be using a PNY 32GB USB 3.0 stick.
 
 First you need to download the ISO image from Kali.org.
 	https://www.kali.org/downloads/
 
-	![Download](https://v1ndl3r.github.io/CIT480/assets/Kali-1.png "Download Page")
+	![Download](https://v1ndl3r.github.io/CIT480/assets/Kali-1.PNG "Download Page")
 
 Next we are going to verify the Sha-256 hash to ensure we got the correct and unaltered version.  This can take a few minutes to complete.
 
-	 ![Verify Hash](https://v1ndl3r.github.io/CIT480/assets/Kali-2.png "Check Hash")
+	 ![Verify Hash](https://v1ndl3r.github.io/CIT480/assets/Kali-2.PNG "Check Hash")
 
 You want to make sure the file hash posted on the web page is the same as the one your computer works out.
 Once you have verified that you have a safe version you are going to flash the image to your USB drive.
