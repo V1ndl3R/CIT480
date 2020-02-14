@@ -3,11 +3,11 @@ This week I am going to go througih how to install Kali Linux Live and run it on
 First you need to download the ISO image from Kali.org.
 	https://www.kali.org/downloads/
 
-	![Download](https://v1ndl3r.github.io/CIT480/assets/Kali-1.PNG "Download Page")
+![Download](https://v1ndl3r.github.io/CIT480/assets/Kali-1.PNG "Download Page")
 
 Next we are going to verify the Sha-256 hash to ensure we got the correct and unaltered version.  This can take a few minutes to complete.
 
-	 ![Verify Hash](https://v1ndl3r.github.io/CIT480/assets/Kali-2.PNG "Check Hash")
+![Verify Hash](https://v1ndl3r.github.io/CIT480/assets/Kali-2.PNG "Check Hash")
 
 You want to make sure the file hash posted on the web page is the same as the one your computer works out.
 Once you have verified that you have a safe version you are going to flash the image to your USB drive.
@@ -15,7 +15,7 @@ I am going to use BalenaEthcher to complete this task. You can download it here:
 	https://www.balena.io/etcher/
 
 Once you have downloaded and installed it Select the correct ISO image and drive.
-	![Flash Drive](https://v1ndl3r.github.io/CIT480/assets/Kali-3.png "Flash Drive")
+![Flash Drive](https://v1ndl3r.github.io/CIT480/assets/Kali-3.png "Flash Drive")
 
 Now that you have successfully flashed your USB drive all you need to do now is restart your computer and leave your USB drive in your computer and it will boot into Kali.
 
