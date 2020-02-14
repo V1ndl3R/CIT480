@@ -1,0 +1,44 @@
+This week I am going to go through how to install Kali Linux Live and run it on a USB stick.  The only additional hardware you will need besides your laptop or computer to run this is a USB stick with more than 8GB of storage space.  I will be using a PNY 32GB USB 3.0 stick.
+
+First you need to download the ISO image from Kali.org.
+	https://www.kali.org/downloads/
+
+	![Download](https://v1ndl3r.github.io/CIT480/assets/Kali-1.png "Download Page")
+
+Next we are going to verify the Sha-256 hash to ensure we got the correct and unaltered version.  This can take a few minutes to complete.
+
+	 ![Verify Hash](https://v1ndl3r.github.io/CIT480/assets/Kali-2.png "Check Hash")
+
+You want to make sure the file hash posted on the web page is the same as the one your computer works out.
+Once you have verified that you have a safe version you are going to flash the image to your USB drive.
+I am going to use BalenaEthcher to complete this task. You can download it here:
+	https://www.balena.io/etcher/
+
+Once you have downloaded and installed it Select the correct ISO image and drive.
+	![Flash Drive](https://v1ndl3r.github.io/CIT480/assets/Kali-3.png "Flash Drive")
+
+Now that you have successfully flashed your USB drive all you need to do now is restart your computer and leave your USB drive in your computer and it will boot into Kali.
+
+We are also going to add Encrypted Persistence so that your data stays on the USB so you continue on projects that you are working on.
+Select the Live USB Encrypted Persistence option from the menu.  Next escalate your privileges with: sudo su.  
+You will have to partions on your USB now, /dev/sdb1 and /dev/sdb2, verify this with fdisk -l.
+Run this command:
+	end=7gb
+	read start _ < <(du -bcm kali-linux-2020.1-live-amd64.iso | tail -1); echo $start
+	parted /dev/sdb mkpart primary $start $end
+
+This will create a third partition, verify with fdisk -l 
+Next we are going to format the third partion with ext3 filesystem and label it persistence.
+	mkfs.ext3 -L persistence /dev/sdb3
+	e2label /dev/sdb3 persistence
+
+Next we will create a mount point, and mounting the third partition there.
+	mkdir =p /mnt/my_usb
+	mount /dev/sdb3 /mnt/my_usb
+	echo " / union" > /mnt/my_usb/pesistence.conf
+	umount /dev/sdb3
+
+
+
+
+	
