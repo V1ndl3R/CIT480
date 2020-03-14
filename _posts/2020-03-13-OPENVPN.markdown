@@ -1,0 +1,78 @@
+This week I am going to talk about the steps needed to create a TAP interface on a OpenVPN server.
+You will need to either already have a self signing CA setup or plan to use a signing Authority.
+I will be using a self-signing CA.  You we need to make some changes to the openssl.cnf file.
+This is located at /usr/lib/ssl/openssl.cnf this file if broken up into different sections.
+In the section with [ usr_cert ] you need to uncomment the that states:
+	nsCertType = server  # for server
+	nsCertType = client , email # for clients
+In addition you need to make sure that the key Usage looks like this:
+	keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+	extendedKeyUsage = serverAuth #for server
+			 = clientAuth #for clients
+In the section [ v3_req ] make sure that key Usage looks the same as above.
+I would recommend make the server cert good for 10 years and clients 1 year.
+
+These are the only changes that you will need to make to this configuration file.
+Make sure you have made all the changes needed for the server configuration and run:
+	openssl req -new -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 3650
+This will generate a private key and a signed certificate.  Change the openssl config for clients
+and run:
+	openssl req -new -x509 -newkey rsa:4096 -keyout client.key -out client.crt -days 365
+You will have to fill in the information for you certs.  The information can be the same except
+common names need to be unique.
+
+Once you have generated both the server and client you can now setup openvpn.
+
+Move to /etc/openvpn (you may need to install it),  there should be folders for server and client.
+CD into server and run:
+	openssl dhparam -out dh2048 dh2048.pem 2048
+	openvpn --genkey --secret ta.key
+
+Make and open a text file to edit:
+	nano server.conf
+Make sure it looks like this:
+	proto udp
+	port 1194
+	ca /etc/openvpn/server/cacert.pem
+	cert /etc/openvpn/server/Server.crt
+	key /etc/openvpn/server/Server.key
+	dh /etc/openvpn/server/dh2048.pem
+	user nobody
+	group nogroup
+	server-bridge
+	persist-key
+	persist-tun
+	verb 3
+	keepalive 10 120
+	cipher AES-256-CBC
+	auth SHA256
+	compress lz4-v2
+	tls-auth /etc/openvpn/server/TechLabVPN1.tlsauth 0
+	script-security 2
+
+Make sure that all the certs and keys are named correctly and have the correct paths.
+CD to the client folder and create a client.conf
+	nano client.conf
+	
+	
+	client
+	dev tap
+	dev-node TechLabVPN-Test
+	nobind
+	tls-auth 1
+	proto udp
+	port 1194
+	remote <SERVERIP>
+	persist-key
+	persist-tun
+	verb 3
+	keepalive 10 120
+	cipher AES-256-CBC
+	auth SHA256
+	compress lz4-v2
+	remote-cert-tls server
+	key-direction 1
+	auth-nocache
+
+
+
