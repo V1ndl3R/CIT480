@@ -23,11 +23,11 @@ host files to add the correct hostname and add the other nodes to the file:
 Once this is compeleted you need to assign static IP addresses for all of you nodes.  You will need to edit the 
 /etc/network/interfaces to add the device as a static IP address
 
-![Interface](https://v1ndl3r.github.io/CIT480/assets/cluster-static-1.png "Static-IP")
+![Interface](https://v1ndl3r.github.io/CIT480/assets/cluster-static-1.PNG "Static-IP")
 
 I was also able to configure my router to accept the static IP addresses.
 
-![Router](https://v1ndl3r.github.io/CIT480/assests/cluster-router.png "router")
+![Router](https://v1ndl3r.github.io/CIT480/assests/cluster-router.PNG "router")
 
 Once I was able to complete statically assigning IP addesses I went ahead and generated SSH files and shared them with all the 
 machies so they would not need a password to log into.
@@ -38,7 +38,7 @@ machies so they would not need a password to log into.
 
 Once you are able to assign staic IP to all you nodes I was able to install docker swarm and attack all the nodes to the swarwm.
 
-![Router](https://v1ndl3r.github.io/CIT480/assets/cluster-nodes.png "nodes")
+![nodes](https://v1ndl3r.github.io/CIT480/assets/cluster-nodes.PNG "nodes")
 
 
 Then you are able to see all of the nodes that are connected to the swarm
