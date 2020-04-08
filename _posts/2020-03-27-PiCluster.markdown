@@ -27,7 +27,7 @@ Once this is compeleted you need to assign static IP addresses for all of you no
 
 I was also able to configure my router to accept the static IP addresses.
 
-![Router](https://v1ndl3r.github.io/CIT480/assests/cluster-router.PNG "router")
+![Router](https://v1ndl3r.github.io/CIT480/assets/cluster-router.PNG "router")
 
 Once I was able to complete statically assigning IP addesses I went ahead and generated SSH files and shared them with all the 
 machies so they would not need a password to log into.
