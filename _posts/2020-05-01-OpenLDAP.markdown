@@ -1,0 +1,114 @@
+This week I will go over how to create a openLDAP server. It is a pretty easy and straight forward task, first we will install it.
+
+	sudo apt-get update
+	sudo apt-get install slapd ldap-utils
+
+This will open the configuration file with you will setup your admin acct. and password.  It will also allow you to select your 
+default DN and CN. If you need to reconfigure this you can run the command:
+
+	sudo dpkg-reconfigure slapd
+
+The command:
+
+	sudo slapcat
+
+Is the easy wasy to see your configuration. The new way is to run:
+
+	ldapsearch -Q -LLL -Y EXTERNAL -H ldapi:/// -b cn=config dn
+
+These two commands will give you roughly the same output. The way you will add content to the database is
+with .ldif files.  We will create a add_content.ldif file to populate our database.
+
+	dn: ou=People,dc=example,dc=com
+	objectClass: organizationalUnit
+	ou: People
+	
+	dn: ou=Groups,dc=example,dc=com
+	objectClass: organizationalUnit
+	ou: Groups
+	
+	dn: cn=miners,ou=Groups,dc=example,dc=com
+	objectClass: posixGroup
+	cn: miners
+	gidNumber: 5000
+	
+	dn: uid=john,ou=People,dc=example,dc=com
+	objectClass: inetOrgPerson
+	objectClass: posixAccount
+	objectClass: shadowAccount
+	uid: john
+	sn: Doe
+	givenName: John
+	cn: John Doe
+	displayName: John Doe
+	uidNumber: 10000
+	gidNumber: 5000
+	userPassword: {CRYPT}x
+	gecos: John Doe
+	loginShell: /bin/bash
+	homeDirectory: /home/john
+
+
+Then run the command:
+
+	ldapadd -x -D cd=admin,dc=example,dc=com -W -f add_content.ldif
+
+This will then prompt your for your password you can also use -w password if you wish to place it inline.
+This is all you need to do to complete your ldap configuration you can add a webserver to view your server.
+In addition you can use this database to do authenticate for other services. You can create a file uid_index.ldif
+
+	dn: olcDatabase={1}mdb,cn=config
+	add: olcDbIndex
+	olcDbIndex: mail eq,sub
+
+This will add indexing for user accounts.
+You can install gnutls and ssl-cert you add TLS authentication:
+
+	sudo apt install gnutls-bin ssl-cert
+
+Run:
+
+	sudo certtool --generate-privkey --bits 4096 --outfile /etc/ssl/private/mycakey.pem
+
+Create the file /etc/ssl/ca.info
+
+	cn = Example Company
+	ca
+	cert_signing_key
+	expiration_days = 3650
+
+Create the self-signed CA Cert:
+
+	sudo certtool --generate-self-signed \
+	--load-privkey /etc/ssl/private/mycakey.pem \
+	--template /etc/ssl/ca.info \
+	--outfile /usr/local/share/ca-certificates/mycacert.crt
+
+Then run:
+
+	sudo dpkg-reconfigure ca-certificates
+	update-ca-certificates
+
+This command will create the server key:
+
+	sudo certtool --generate-privkey \
+	--bits 2048 \
+	--outfile /etc/ldap/ldap01_slapd_key.pem
+
+	sudo chgrp openldap /etc/ldap/ldap01_slapd_key.pem
+	sudo chmod 0640 /etc/ldap/ldap01_slapd_key.pem
+
+This will change ownership of the files. This file will add TLS authentication:
+
+	dn: cn=config
+	add: olcTLSCACertificateFile
+	olcTLSCACertificateFile: /etc/ssl/certs/cacert.pem
+	-
+	add: olcTLSCertificateFile
+	olcTLSCertificateFile: /etc/ssl/certs/ldap.pem
+	-
+	add: olcTLSCertificateKeyFile
+	olcTLSCertificateKeyFile: /etc/ssl/private/ldap_key.pem
+
+
+
