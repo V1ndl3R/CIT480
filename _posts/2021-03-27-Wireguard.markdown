@@ -4,13 +4,13 @@ We will create a Wireguard VPN server on AWS lightsail, this only costs $3.50 a 
 You can select any linux distro that you like, I will be using Ubuntu 20.04 LTS, select OS only and select your distro.
 Make sure you select the correct region, you can name it anything you like, all other settings can be default:
 
-![VPN1](https://v1ndl3r.github.io/CIT480/assets/AWS-VPN1.PNG)
+![VPN1](https://v1ndl3r.github.io/CIT480/assets/AWS-VPN1.png)
 
 
 As the instance is spinning up, select the network tab and create a static IP.  Select your instance and attach the IP.
 
 
-![VPN2](https://v1ndl3r.github.io/CIT480/assets/AWS-VPN2.PNG)
+![VPN2](https://v1ndl3r.github.io/CIT480/assets/AWS-VPN2.png)
 
 Go you for lightsail account page and download your SSH key.
 Select your Instance and select Manage, go to the networking tab restrict your SSH in IPV4 delete the IPV6 rules.
@@ -59,7 +59,7 @@ Enable IPV4 forwarding:
 	sudo nano /etc/sysctl.conf
 	sysctl -p
 
-![VPN3](https://v1ndl3r.github.io/CIT480/assets/AWS-VPN3.PNG)
+![VPN3](https://v1ndl3r.github.io/CIT480/assets/AWS-VPN3.png)
 
 Run to start the wireguard and then enable it to run on startup:
 	wg-quick up wg0
