@@ -33,4 +33,11 @@ Below are tools that will allow you to Fuzz a website and find additional direct
 	wap: https://www.kali.org/tools/zaproxy/
 	gobuster: https://www.kali.org/tools/gobuster/
 
-	
+This site will let you see when a site was registered and who created the website:
+	crt.sh
+This tool will brute force dns records dnsrecon the command is:
+	dnsrecon -t brt -d <SITE>
+This tool will enumerate subdomains by searching in different search engines:
+	https://github.com/aboul3la/Sublist3r
+The command is:
+	./sublist3r.py -d <SITE>
