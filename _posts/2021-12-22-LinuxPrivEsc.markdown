@@ -1,8 +1,8 @@
 If you have local access to the machine first you want to find a way to get root.
 First check what programs you can run as sudo so run:
 
-
 	sudo -l
+
 This is list all the programs that you can run as root and might give you a path to escalate your
 privileges. Check at this wedsite to see if any of the progams are listed for sudo:
 
