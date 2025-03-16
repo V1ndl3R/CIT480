@@ -1,33 +1,80 @@
 How to Perform a Basic Vulnerability Scan with OpenVAS
-OpenVAS is a popular tool for scanning systems and networks for vulnerabilities. Here’s how to set it up and perform a scan.
+Vulnerability scanning is a critical step in maintaining a secure network. OpenVAS (Open Vulnerability Assessment System) is a powerful, open-source tool for identifying security vulnerabilities in systems and applications. In this guide, I’ll walk you through the process of installing, setting up, and running your first scan using OpenVAS on Kali Linux.
+
+What Is OpenVAS?
+OpenVAS is a suite of tools that performs vulnerability scanning and management. It’s part of the Greenbone Vulnerability Management (GVM) framework and offers both free and enterprise-grade options. OpenVAS allows security professionals to identify vulnerabilities in devices, servers, and applications, ensuring they're addressed before attackers can exploit them.
 
 Step 1: Install OpenVAS
-Install OpenVAS on Kali Linux:
+On Kali Linux, OpenVAS can be installed directly from the default repositories. Begin by updating your system and installing OpenVAS:
 
 bash
 sudo apt update
 sudo apt install openvas
-After installation, initialize OpenVAS:
+Once installed, initialize OpenVAS with the setup command:
 
 bash
 sudo gvm-setup
+This process configures the services, downloads the latest vulnerability database, and sets up a default admin account. Make a note of the admin credentials displayed after the setup completes.
+
 Step 2: Start OpenVAS Services
-Launch OpenVAS:
+After installation, you need to start the OpenVAS services:
 
 bash
 sudo gvm-start
-Then, access the web interface via:
+To check the status of the services, use:
+
+bash
+sudo gvm-check-setup
+Ensure all components are running correctly before proceeding.
+
+Step 3: Access the Web Interface
+OpenVAS provides a user-friendly web interface to manage scans and view results. Access it through a web browser by navigating to:
 
 https://localhost:9392
-Step 3: Log In to the Web Interface
-Log in using the default admin credentials (provided during setup). Change the password for security purposes.
+Log in using the admin credentials provided during the setup process. If you’re accessing the interface remotely, replace localhost with your server's IP address.
 
-Step 4: Run a Vulnerability Scan
-Add a target system.
+Step 4: Add a Target for Scanning
+Once logged in, the first step in running a scan is to add a target:
 
-Create a new scan task.
+Go to Configuration > Targets.
 
-Start the scan and monitor its progress.
+Click New Target and enter details such as the target’s name and IP address or hostname.
+
+Save your configuration.
+
+Step 5: Create and Run a Scan Task
+With your target configured, you’re ready to create a scan:
+
+Navigate to Scans > Tasks and select New Task.
+
+Fill in details, including the task name and the target you created earlier.
+
+Choose a scan configuration, such as "Full and Fast" for comprehensive scanning.
+
+Click Save, then Start Scan to initiate the task.
+
+Step 6: Monitor the Scan Progress
+As the scan runs, you can monitor its status in the Scans > Tasks section. Once complete, OpenVAS will generate a detailed report.
+
+Step 7: Review the Results
+OpenVAS reports provide a wealth of information about discovered vulnerabilities, including:
+
+Severity Levels: Vulnerabilities are categorized as Low, Medium, High, or Critical.
+
+Details and Recommendations: Each finding includes a description of the issue and remediation steps.
+
+Affected Hosts and Ports: Helps pinpoint where the vulnerability exists.
+
+To access the report, go to Scans > Reports and select the completed task.
+
+Step 8: Take Remedial Action
+After identifying vulnerabilities, take steps to mitigate them:
+
+Apply security patches and updates.
+
+Disable unused services and ports.
+
+Harden configurations based on best practices.
 
 Conclusion
-OpenVAS makes vulnerability management straightforward. Regular scans help you identify and mitigate security risks.
+Regular vulnerability scans are vital for identifying and mitigating potential risks in your environment. With OpenVAS, you have a powerful tool that simplifies the process, giving you detailed insights into your security posture. By following this guide, you’re well on your way to keeping your systems secure and resilient against emerging threats.
