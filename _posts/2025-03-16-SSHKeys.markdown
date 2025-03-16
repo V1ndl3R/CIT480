@@ -1,0 +1,43 @@
+How to Set Up SSH Keys for Secure Server Access
+This week, I’ll show you how to set up SSH keys to securely access servers without relying on passwords. SSH keys improve security by using encrypted authentication methods.
+
+Step 1: Generate SSH Keys
+Start by creating a key pair on your local machine:
+
+bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+You’ll be prompted to save the key. Press Enter to use the default location (e.g., ~/.ssh/id_rsa).
+
+Set a passphrase for added security (optional).
+
+Step 2: Copy the Public Key to Your Server
+Next, transfer the public key to your server:
+
+bash
+ssh-copy-id user@server_ip
+Replace user with your username and server_ip with the server's IP address. This command adds your public key to the server’s authorized keys file.
+
+Step 3: Test SSH Key Login
+Try logging in to your server:
+
+bash
+ssh user@server_ip
+If successful, you’ll be logged in without needing to enter a password.
+
+Step 4: Disable Password Authentication (Optional)
+For maximum security, disable password-based login:
+
+Open the SSH configuration file on your server:
+
+bash
+sudo nano /etc/ssh/sshd_config
+Find and update these lines:
+
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+Restart the SSH service:
+
+bash
+sudo systemctl restart ssh
+Conclusion
+SSH keys not only enhance security but also streamline server access. Now your server is ready for secure, key-based authentication!

@@ -1,0 +1,33 @@
+How to Perform a Basic Vulnerability Scan with OpenVAS
+OpenVAS is a popular tool for scanning systems and networks for vulnerabilities. Here’s how to set it up and perform a scan.
+
+Step 1: Install OpenVAS
+Install OpenVAS on Kali Linux:
+
+bash
+sudo apt update
+sudo apt install openvas
+After installation, initialize OpenVAS:
+
+bash
+sudo gvm-setup
+Step 2: Start OpenVAS Services
+Launch OpenVAS:
+
+bash
+sudo gvm-start
+Then, access the web interface via:
+
+https://localhost:9392
+Step 3: Log In to the Web Interface
+Log in using the default admin credentials (provided during setup). Change the password for security purposes.
+
+Step 4: Run a Vulnerability Scan
+Add a target system.
+
+Create a new scan task.
+
+Start the scan and monitor its progress.
+
+Conclusion
+OpenVAS makes vulnerability management straightforward. Regular scans help you identify and mitigate security risks.

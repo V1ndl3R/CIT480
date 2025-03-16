@@ -1,0 +1,53 @@
+How to Use Hydra for Password Cracking
+Hydra is a fast and flexible tool for brute-forcing passwords. Here’s how to use it responsibly for testing.
+
+Step 1: Install Hydra
+On Kali Linux, Hydra is pre-installed. To install it manually:
+
+bash
+sudo apt install hydra
+Step 2: Identify the Target Service
+Determine the service you want to test (e.g., SSH, FTP). For example, to test SSH on a specific IP:
+
+bash
+hydra -l username -P /path/to/wordlist.txt ssh://target_ip
+Step 3: Use a Wordlist
+Hydra requires a wordlist for password attempts. Kali Linux includes rockyou.txt:
+
+bash
+/usr/share/wordlists/rockyou.txt
+Step 4: Analyze Results
+Hydra will display successful login credentials if it finds a match.
+
+Conclusion
+Hydra is a powerful tool for testing password strength. Always use it ethically and with permission.
+
+How to Set Up Fail2Ban for Brute-Force Protection
+Fail2Ban is a tool that protects your server from brute-force attacks by banning IPs after repeated failed login attempts.
+
+Step 1: Install Fail2Ban
+Install Fail2Ban on your server:
+
+bash
+sudo apt install fail2ban
+Step 2: Configure Fail2Ban
+Edit the default configuration file:
+
+bash
+sudo nano /etc/fail2ban/jail.conf
+Enable the SSH jail by setting:
+
+[sshd]
+enabled = true
+Step 3: Restart Fail2Ban
+Apply the changes by restarting the service:
+
+bash
+sudo systemctl restart fail2ban
+Step 4: Monitor Banned IPs
+View banned IPs with:
+
+bash
+sudo fail2ban-client status sshd
+Conclusion
+Fail2Ban adds an extra layer of security to your server by automatically blocking suspicious activity. Regularly review logs to fine-tune its settings.

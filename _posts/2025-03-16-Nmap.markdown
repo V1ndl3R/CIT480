@@ -1,0 +1,54 @@
+Understanding Nmap: A Beginner's Guide
+This blog will walk you through getting started with Nmap, the Network Mapper tool. Nmap is one of the most versatile tools for network discovery and security auditing.
+
+Step 1: Install Nmap
+Nmap is pre-installed on Kali Linux, but you can install or update it with:
+
+bash
+sudo apt install nmap
+On other operating systems, download it from the official site: Nmap Downloads.
+
+Step 2: Basic Nmap Scan
+Start by scanning a single IP to discover open ports:
+
+bash
+nmap <IP address>
+For example:
+
+bash
+nmap 192.168.1.1
+
+Nmap will list open ports and their associated services.
+
+Step 3: Perform a Range Scan
+To scan an entire network, use a range of IPs:
+
+bash
+nmap 192.168.1.1-255
+This command maps all active devices on the network.
+
+Step 4: Use Nmap with Specific Options
+For more detailed scans:
+
+Service Version Detection:
+
+bash
+nmap -sV <IP address>
+Operating System Detection:
+
+bash
+nmap -O <IP address>
+
+Aggressive Scan (Combines multiple options):
+
+bash
+nmap -A <IP address>
+Step 5: Save Scan Results
+To save your results for later use:
+
+bash
+nmap -oN output.txt <IP address>
+Replace output.txt with your preferred filename.
+
+Conclusion
+Nmap is a powerful tool for beginners and professionals alike. Experiment with its features and incorporate it into your security workflows.

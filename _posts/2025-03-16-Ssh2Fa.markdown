@@ -1,0 +1,39 @@
+How to Set Up Two-Factor Authentication (2FA) for SSH
+This guide covers adding an extra layer of security to your server with Two-Factor Authentication (2FA) for SSH logins.
+
+Step 1: Install the Google Authenticator Package
+On your server, install the package:
+
+bash
+sudo apt install libpam-google-authenticator
+Step 2: Configure Google Authenticator
+Run the setup tool:
+
+bash
+google-authenticator
+Scan the QR code with an authenticator app (e.g., Google Authenticator).
+
+Save the backup codes for future use.
+
+Step 3: Update PAM Configuration
+Edit the PAM configuration file:
+
+bash
+sudo nano /etc/pam.d/sshd
+Add this line at the end:
+
+auth required pam_google_authenticator.so
+Step 4: Enable 2FA for SSH
+Edit the SSH configuration file:
+
+bash
+sudo nano /etc/ssh/sshd_config
+Set:
+
+ChallengeResponseAuthentication yes
+Restart SSH:
+
+bash
+sudo systemctl restart ssh
+Conclusion
+With 2FA enabled, logging into your server requires both an SSH key (or password) and a code from your authenticator app, boosting security.

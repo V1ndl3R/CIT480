@@ -1,0 +1,27 @@
+How to Use John the Ripper for Password Cracking
+This week, let’s explore John the Ripper, a powerful tool for password cracking and testing.
+
+Step 1: Install John the Ripper
+On Kali Linux, John is pre-installed. To update or install:
+
+bash
+sudo apt install john
+Step 2: Prepare Password Hashes
+Save password hashes into a text file, e.g., hashes.txt. Use a common format like MD5 or SHA-256.
+
+Step 3: Crack Passwords
+Run John against your hash file:
+
+bash
+john hashes.txt
+For a wordlist attack:
+
+bash
+john --wordlist=/path/to/wordlist.txt hashes.txt
+Step 4: View Results
+Display cracked passwords:
+
+bash
+john --show hashes.txt
+Conclusion
+John the Ripper is a versatile tool for testing password strength. Always use it responsibly and ethically.
